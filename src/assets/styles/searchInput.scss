@@ -1,0 +1,52 @@
+form {
+  width: 100%;
+  margin: 20px 0;
+  width: 100%;
+  position: relative;
+  display: flex;
+  border-radius: 999px;
+  overflow: hidden;
+  input {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 1.4em 1.7em;
+    outline: none;
+    border: none;
+  }
+  button {
+    position: absolute;
+    align-items: center;
+    display: flex;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 16px;
+    background-color: #0a8dda;
+    padding: 1.4em 2em;
+    color: white;
+    text-transform: capitalize;
+    border-radius: 999px;
+    &:hover {
+      background-color: #065c8e;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  form {
+    input {
+      font-size: 0.8rem;
+      padding: 1.1em 1.7em;
+      outline: none;
+      border: none;
+    }
+    button {
+      position: absolute;
+      align-items: center;
+      display: flex;
+      font-size: 13px;
+      padding: 1.2em 1em;
+
+    }
+  }
+}

@@ -1,0 +1,138 @@
+.movie-search {
+  position: relative;
+  .back-btn {
+    top: -44px;
+    left: 0;
+  }
+
+  form {
+    width: 100%;
+    margin: 50px 0 20px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .flex {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #64646f33;
+
+    .search-results {
+      width: 20%;
+      border-radius: 10px;
+      border: 1px solid #64646f33;
+      overflow: hidden;
+      .result-head {
+        background-color: #01b4e4;
+        padding: 20px;
+        p {
+          color: white;
+        }
+      }
+      ul {
+        padding: 20px 0;
+        li {
+          cursor: pointer;
+          padding: 10px 15px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          i {
+            font-style: normal;
+            padding: 3px;
+            background-color: rgb(224, 224, 224);
+            color: rgb(120, 120, 120);
+          }
+          &:hover {
+            background-color: rgb(246, 246, 246);
+          }
+        }
+        .active {
+          background-color: rgb(220, 220, 220);
+          font-weight: 700;
+        }
+      }
+    }
+    .seached-movies {
+      width: 80%;
+    }
+  }
+
+  .seached-movies {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .seached-movie {
+      display: flex;
+      box-shadow: #64646f33 0px 7px 29px 0px;
+      border-radius: 10px;
+      border: 1px solid #64646f33;
+      overflow: hidden;
+      transition: all 0.4s ease-in-out;
+      &:hover {
+        box-shadow: #1d1d2033 0px 7px 29px 0px;
+        scale: 1.01;
+        .img-div {
+          .img {
+            img {
+              scale: 1.1;
+            }
+          }
+        }
+      }
+
+      .img-div {
+        cursor: pointer;
+        .img {
+          height: 100%;
+          img {
+            object-fit: cover;
+            width: 6rem;
+            height: 100%;
+            display: block;
+          }
+        }
+      }
+
+      .movie-info {
+        padding: 20px;
+        h4 {
+          margin-bottom: 15px;
+        }
+        span {
+          color: gray;
+        }
+        p {
+          display: -webkit-box;
+          font-size: 15px;
+          margin-top: 20px;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-search {
+    .flex {
+      flex-direction: column;
+      align-items: center;
+
+      .search-results {
+        width: 100%;
+      }
+      .seached-movies {
+        width: 100%;
+      }
+    }
+  }
+}
