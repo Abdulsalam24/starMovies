@@ -13,7 +13,11 @@ const BottomNav = () => {
         <Link to="/">
           <RiMovie2Line fill={pathname === "/" ? "#47CFFF" : "#999999"} />
         </Link>
-        <RiUserSearchLine />
+        <Link to={`/movie-search/:search`}>
+          <RiUserSearchLine
+            fill={pathname.includes("movie-search") ? "#47CFFF" : "#999999"}
+          />
+        </Link>
         <BsPeople />
       </div>
     </div>

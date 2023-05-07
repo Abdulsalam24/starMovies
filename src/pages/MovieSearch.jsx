@@ -7,6 +7,7 @@ import "../assets/styles/movieSearch.scss";
 import Spinner from "../components/Loader";
 import SearchResults from "../components/home/SearchResults";
 import BackButton from "../components/BackButton";
+import BottomNav from "../components/BottomNav";
 
 function MovieSearch() {
   const { searchedFiltered, searchHandle, isLoading, isError } =
@@ -38,6 +39,7 @@ function MovieSearch() {
           </div>
         )}
       </div>
+      <BottomNav/>
     </div>
   );
 }
