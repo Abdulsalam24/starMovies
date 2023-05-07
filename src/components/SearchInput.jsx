@@ -1,17 +1,18 @@
 import { useContext, useState } from "react";
 import MovieContext from "../context/MovieContext";
 
-import '../assets/styles/searchInput.scss'
+import "../assets/styles/searchInput.scss";
 
 function SearchInput() {
-  
+
   const { searchHandle } = useContext(MovieContext);
+  
   const [text, setText] = useState("");
 
   const onSubmitSearch = (e) => {
     e.preventDefault();
     searchHandle(text);
-    setText("")
+    setText("");
   };
 
   return (

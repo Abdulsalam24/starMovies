@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MovieContext from "../../context/MovieContext";
 
 function SeachedMovie({ movie }) {
+
   const {
     id,
     overview,
@@ -15,7 +16,6 @@ function SeachedMovie({ movie }) {
   } = movie;
 
   const { fetchMovie } = useContext(MovieContext);
-
 
   return (
     <div className="seached-movie">

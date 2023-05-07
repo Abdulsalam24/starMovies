@@ -7,7 +7,6 @@ const Movie = ({movie}) => {
 
 
     return (
-
         <motion.div 
         animate={{opacity : 1}} 
         initial={{opacity : 0}} 

@@ -4,7 +4,7 @@ import SeachedMovie from "../components/home/SeachedMovie";
 import SearchInput from "../components/SearchInput";
 import MovieContext from "../context/MovieContext";
 import "../assets/styles/movieSearch.scss";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/Loader";
 import SearchResults from "../components/home/SearchResults";
 import BackButton from "../components/BackButton";
 

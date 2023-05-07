@@ -6,11 +6,12 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: "#E5E5E5";
 }
 
 h1 {
   font-size: 24px;
-  color: #0F1B2B;
+  color: #0f1b2b;
   font-weight: 600;
 }
 
@@ -18,8 +19,22 @@ h2 {
   font-size: 32px;
 }
 
-h4 {
+h3 {
+  font-weight: 500;
   font-size: 16px;
+  color: #0f1b2b;
+}
+
+.genre {
+  h3:not(:last-of-type)::after {
+    content: ",";
+  }
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 16px;
+  color: #0f1b2b;
 }
 
 button {
@@ -37,10 +52,33 @@ li {
   list-style: none;
 }
 
+.stars {
+  svg {
+    width: 20px;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(174, 174, 174);
+}
+
 .spinner {
   display: grid;
   height: 100vh;
   place-items: center;
+}
+
+.bottomNav {
+  svg {
+    font-size: 22.5px;
+  }
 }
 
 // .rate {

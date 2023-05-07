@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import MovieContext from "../context/MovieContext";
-import SearchInput from "./SearchInput";
+import MovieContext from "../../context/MovieContext";
+import SearchInput from "../SearchInput";
 import { FaSearch } from "react-icons/fa";
-import { ReactComponent as SearchIcon } from "../assets/icons/searchIcon.svg";
+import { ReactComponent as SearchIcon } from "../../assets/icons/searchIcon.svg";
 
 function Nav() {
   const { setNavSearch, navSearch } = useContext(MovieContext);

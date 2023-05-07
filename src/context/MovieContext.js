@@ -2,22 +2,22 @@ import axios from 'axios'
 import { createContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import tmbd from '../api/tmbd';
-const MovieContext = createContext()
 
+const MovieContext = createContext()
 
 export const MovieContextProvider = ({ children }) => {
 
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-
   const [navSearch, setNavSearch] = useState(false);
-
-  const navigate = useNavigate()
   const [popular, setPopular] = useState([]);
   const [filtered, setFiltered] = useState([]);
 
+  const navigate = useNavigate()
+
   //search
   const [movieSearched, setMovieSearched] = useState([]);
+
   const [searchedFiltered, setSearchedFiltered] = useState([]);
 
   //single movie
@@ -25,23 +25,16 @@ export const MovieContextProvider = ({ children }) => {
 
   const [cat, setCat] = useState('');
 
-  const fetchMovies = async (cat) => {
-    setCat(cat)
-    try {
-      // const { data } = await axios.get(
-      //   `https://api.themoviedb.org/3/${cat}/popular?api_key=6c288757e59a68ab616ba95e467779dc&language=en-US&page=1`
-      // );
-      const { data } = await tmbd.get(
-        `${cat}/popular`
-      );
+  //Reviews Movie
+  const [reviews, setReviews] = useState('');
 
-      setPopular(data.results);
-      setFiltered(data.results);
-      setIsLoading(false)
-    } catch (error) {
-      setIsError(true)
-    }
-  };
+  const [movieDetails, setMovieDetails] = useState('');
+
+  const [casts, setCasts] = useState(null);
+
+  const [similarMovies, setSimilarMovies] = useState(null);
+
+  // https://api.themoviedb.org/3/movie/447365/credits?api_key=6c288757e59a68ab616ba95e467779dc&language=en-US
 
   const searchHandle = async (text) => {
     setIsLoading(true)
@@ -66,30 +59,80 @@ export const MovieContextProvider = ({ children }) => {
     }
   };
 
-
-  const fetchMovie = async (id, media) => {
+  const fetchMovies = async (cat) => {
+    setCat(cat)
     try {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/${media}/${id}?api_key=6c288757e59a68ab616ba95e467779dc&language=en-US`
+      const { data } = await tmbd.get(
+        `${cat}/popular`
       );
-      setSingleMovie(data)
-      navigate(`/singleMovie/${id}/${media}`)
+      setPopular(data.results);
+      setFiltered(data.results);
       setIsLoading(false)
     } catch (error) {
       setIsError(true)
     }
   };
 
+  const fetchMovie = async (id, type) => {
+
+    console.log(id, type, 'movieee')
+
+    try {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/${type}/${id}?api_key=6c288757e59a68ab616ba95e467779dc&language=en-US`
+      );
+      console.log(data, 'datadatadata')
+      setSingleMovie(data)
+      fetchCasts(id, type)
+      navigate(`/singleMovie/${id}/${type}`)
+
+      setIsLoading(false)
+    } catch (error) {
+      setIsError(true)
+    }
+  };
+
+  const fetchReviews = async (id, type) => {
+    const { data } = await tmbd.get(
+      `https://api.themoviedb.org/3/${type}/${id}/reviews?api_key=6c288757e59a68ab616ba95e467779dc&language=en-US&page=1`
+    );
+    setReviews(data.results)
+  }
+
+  const fetchCasts = async (id, type) => {
+    const { data } = await tmbd.get(
+      `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=6c288757e59a68ab616ba95e467779dc&language=en-US`
+    );
+    setCasts(data.cast)
+  }
+
+  const fetchSimilar = async (id, type) => {
+    const { data } = await tmbd.get(`https://api.themoviedb.org/3/${type}/${id}/similar?api_key=6c288757e59a68ab616ba95e467779dc&language=en-US&page=1`
+    );
+    setSimilarMovies(data.results)
+  }
+
+
+
   return (
     <MovieContext.Provider value={{
       fetchMovie,
       fetchMovies,
+      fetchReviews,
       setFiltered,
       setPopular,
       searchHandle,
       setSearchedFiltered,
       setCat,
       setNavSearch,
+      setMovieDetails,
+      setReviews,
+      fetchCasts,
+      fetchSimilar,
+      similarMovies,
+      casts,
+      movieDetails,
+      reviews,
       navSearch,
       isError,
       isLoading,
